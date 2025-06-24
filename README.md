@@ -59,43 +59,40 @@ The following Python visualizations were embedded inside Power BI:
 
 ### 1. 🔹 Sales by Product (Bar Chart)
 
-import matplotlib.pyplot as plt
-import seaborn as sns
+- import matplotlib.pyplot as plt
+- import seaborn as sns
 
-dataset.columns = [col.replace(" ", "_").replace(".", "_") for col in dataset.columns]
-plt.figure(figsize=(10, 6))
-sns.barplot(x="Product", y="Sales", data=dataset, estimator=sum, ci=None, palette="Paired")
-plt.title("Total Sales by Product")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
+- dataset.columns = [col.replace(" ", "_").replace(".", "_") for col in dataset.columns]
+- plt.figure(figsize=(10, 6))
+- sns.barplot(x="Product", y="Sales", data=dataset, estimator=sum, ci=None, palette="Paired")
+- plt.title("Total Sales by Product")
+- plt.xticks(rotation=45)
+- plt.tight_layout()
+- plt.show()
 
 ---
 
 ### 2. 🔹 Profit vs Sales (Scatter Plot with Segment Hue)
 
-plt.figure(figsize=(8, 6))
-sns.scatterplot(x="Sales", y="Profit", hue="Segment", data=dataset)
-plt.title("Profit vs Sales by Segment")
-plt.tight_layout()
-plt.show()
+- plt.figure(figsize=(8, 6))
+- sns.scatterplot(x="Sales", y="Profit", hue="Segment", data=dataset)
+- plt.title("Profit vs Sales by Segment")
+- plt.tight_layout()
+- plt.show()
 
 ---
 
 ### 3. 🔹 Monthly Sales Trend (Line Plot)
 
-dataset["Month_Name"] = pd.Categorical(dataset["Month_Name"],
-    categories=["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"],
-    ordered=True)
-monthly_sales = dataset.groupby("Month_Name")["Sales"].sum().reset_index()
-
-plt.figure(figsize=(10, 5))
-sns.lineplot(x="Month_Name", y="Sales", data=monthly_sales, marker='o')
-plt.title("Monthly Sales Trend")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
+- dataset["Month_Name"] = pd.Categorical(dataset["Month_Name"], categories=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], ordered=True)
+- monthly_sales = dataset.groupby("Month_Name")["Sales"].sum().reset_index()
+- 
+- plt.figure(figsize=(10, 5))
+- sns.lineplot(x="Month_Name", y="Sales", data=monthly_sales, marker='o')
+- plt.title("Monthly Sales Trend")
+- plt.xticks(rotation=45)
+- plt.tight_layout()
+- plt.show()
 
 ---
 ## 🧠 Key Learnings
